@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.hideKeyboardOnTap()
     }
     
 
@@ -53,18 +53,17 @@ class LoginViewController: UIViewController {
     }
         
 }
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+//hides keyboard when tapped anywhere
+extension UIViewController {
+    func hideKeyboardOnTap() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
-    */
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
 
 
